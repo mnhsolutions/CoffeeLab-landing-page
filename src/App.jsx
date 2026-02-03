@@ -1,4 +1,4 @@
-import Layout from "./layouts/layout";
+import Layout from "./layouts/Layout";
 import Hero from "./components/Hero";
 import Coffees from "./components/Coffees";
 import Menu from "./components/Menu";
