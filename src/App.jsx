@@ -1,11 +1,25 @@
+import Layout from "./layouts/layout";
+import Hero from "./components/Hero";
+import Coffees from "./components/Coffees";
+import Menu from "./components/Menu";
+import About from "./components/About";
+import Services from "./components/Services";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import './App.css'
 
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-indigo-500">
-        Inicio de proyecto
-      </h1>
-    </div>
-  )
+    <Layout>
+      <Hero />
+      <Coffees />
+      <Menu />
+      <About />
+      <Services />
+      <Contact />
+      <Footer />
+    </Layout>
+  );
 }
+
+export default App;

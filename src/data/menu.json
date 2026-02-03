@@ -1,0 +1,28 @@
+{
+  "all": [
+    { "id": "coffe-01", "title": "Café", "price": 3000, "image": "/menu/Coffee-classic.png", "description": "Infusión caliente con café", "category": "coffes" },
+    { "id": "coffe-02", "title": "Café Moca", "price": 3000, "image": "/menu/Mocha-coffee.png", "description": "Infusión caliente con leche y mocca", "category": "coffes" },
+    { "id": "coffe-03", "title": "Café Helado", "price": 3000, "image": "/menu/Coffee-ice.png", "description": "Infusión fría con leche", "category": "coffes" },
+    { "id": "coffe-04", "title": "Café Vainilla", "price": 3000, "image": "/menu/Coffee-vanilla.png", "description": "Infusión caliente de vainilla", "category": "coffes" },
+
+    { "id": "smoothie-01", "title": "Limonada con menta", "price": 1500, "image": "/menu/Green-smoothie.png", "description": "Limonada con menta", "category": "smoothies" },
+    { "id": "smoothie-02", "title": "Licuado de frutilla", "price": 1500, "image": "/menu/Strawberry-smoothie.png", "description": "De frutilla", "category": "smoothies" },
+
+    { "id": "baking-01", "title": "Torta Tiramisú", "price": 3000, "image": "/menu/Tiramisu.png", "description": "Con vainillas y crema", "category": "baking" },
+    { "id": "baking-02", "title": "Torta Red Velvet", "price": 5000, "image": "/menu/Red-Velvet.png", "description": "Con helado de crema", "category": "baking" },
+    { "id": "baking-03", "title": "Galletas", "price": 1500, "image": "/menu/Cookies.png", "description": "Con chips de chocolate", "category": "baking" },
+    { "id": "baking-04", "title": "Muffin chocolate", "price": 1500, "image": "/menu/Chocolate-muffin.png", "description": "De chocolate", "category": "baking" },
+    { "id": "baking-05", "title": "Muffin vainilla", "price": 1500, "image": "/menu/Vanilla-muffin.png", "description": "De vainilla con arándanos", "category": "baking" },
+    { "id": "baking-06", "title": "Croissant", "price": 1500, "image": "/menu/Croissant.png", "description": "De manteca", "category": "baking" },
+
+    { "id": "snack-01", "title": "Tostada Palta", "price": 1500, "image": "/menu/Toast.png", "description": "Tostón con palta", "category": "snacks" },
+    { "id": "snack-02", "title": "Barrita de Cereal", "price": 3000, "image": "/menu/Cereal-bar.png", "description": "Con Almendras", "category": "snacks" },
+    { "id": "snack-03", "title": "Yogurt con frutas", "price": 1500, "image": "/menu/Yogurt.png", "description": "Con granola y frutillas", "category": "snacks" },
+    { "id": "snack-04", "title": "Ensalada de Frutas", "price": 3000, "image": "/menu/Fruit-salad.png", "description": "Ensalada de Frutas", "category": "snacks" }
+  ],
+
+  "coffes": ["coffe-01","coffe-02","coffe-03","coffe-04"],
+  "smoothies": ["smoothie-01","smoothie-02"],
+  "baking": ["baking-01","baking-02","baking-03","baking-04","baking-05","baking-06"],
+  "snacks": ["snack-01","snack-02","snack-03","snack-04"]
+}
