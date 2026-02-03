@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FilterMenu } from "./Menu/FilterMenu";
+import FilterMenu from "./Menu/FilterMenu";
 import MenuCard from "./Menu/MenuCard";
 import menuData from "../data/menu.json"; 
 

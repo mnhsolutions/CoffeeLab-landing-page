@@ -1,7 +1,45 @@
 export default function About() {
-	return (
-		<>
-			<h1>About</h1>
-		</>
-	)
+  return (
+    <>
+			<section className="py-20 h-full max-md:py-12 max-md:h-auto">
+  			<div className="max-w-[1200px] mx-auto h-full px-4 max-md:px-6">
+    			<div className="grid grid-rows-[auto_1fr] h-full max-md:h-auto">
+      			<header className="flex flex-col justify-center items-center gap-6 text-center h-28
+          	max-md:h-auto">
+        			<h1 className="relative inline-block text-3xl font-bold
+          		max-md:text-2xl after:content-[''] after:block after:h-[3px] after:bg-amber-500 after:mt-2 after:w-full mb-6 max-md:mb-4">
+						    Sobre nosotros
+        			</h1>
+      			</header>
+
+					{/* CONTENIDO */}
+      			<div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-max-md:gap-8">
+						{/* IMAGEN */}
+        		<div className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg
+            max-md:h-64">
+          		<img
+            		src="/images/about-us-background.webp"
+            		alt="CoffeeLab interior"
+            		className="w-full h-full object-cover"
+          		/>
+        		</div>
+
+						{/* TEXTO */}
+        		<div className="flex flex-col justify-center">
+          		<p className="text-xl font-sans text-gray-700 leading-relaxed max-md:text-base">
+            		En <strong className="text-amber-600">CoffeeLab</strong> creemos que el café
+            		es mucho más que una bebida: es una experiencia, un ritual y un punto
+            		de encuentro. Trabajamos con granos seleccionados, tostados cuidadosamente
+            		y preparados por baristas apasionados que entienden el café como una mezcla
+            		de técnica, arte y sensibilidad. Nuestro espacio fue diseñado para invitar
+            		a quedarse, experimentar y disfrutar cada momento alrededor de una buena
+            		taza de café.
+          		</p>
+        		</div>
+      		</div>
+    		</div>
+  		</div>
+		</section>
+    </>
+  )
 }

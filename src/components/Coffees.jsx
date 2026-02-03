@@ -1,5 +1,5 @@
 import coffeesData from '../data/coffees.json';
-import { CoffeeCard } from './Coffees/CoffeeCard';
+import CoffeeCard from './Coffees/CoffeeCard';
 
 export default function Coffees() {
   return (

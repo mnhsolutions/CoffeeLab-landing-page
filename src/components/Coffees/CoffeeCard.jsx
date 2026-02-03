@@ -1,3 +1,5 @@
+import IconArrow from '../../icons/IconArrow'
+
 export default function CoffeeCard({
   headerBackground,
   imageCard,
@@ -44,6 +46,7 @@ export default function CoffeeCard({
           style={{ color: textColorButtonCard }}
         >
           {textButtonCard}
+          <IconArrow />
         </button>
       </footer>
     </div>

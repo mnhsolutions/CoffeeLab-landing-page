@@ -1,16 +1,18 @@
-// src/components/Hero.jsx
+import { useRef } from "react";
 import Navbar from "./Navbar";
 
 export default function Hero() {
+  const sentinelRef = useRef(null);
+
   return (
-    <div className="relative h-screen w-full bg-cover bg-center bg-[url('/images/hero-background.webp')] text-white">
+    <div className="relative h-screen bg-[url('/images/hero-background.webp')] bg-cover bg-center text-white">
       {/* Overlay oscuro */}
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Navbar */}
       <div className="absolute top-0 left-0 w-full z-20">
         <div className="max-w-[1200px] mx-auto px-4">
-          <Navbar />
+          <Navbar sentinelRef={sentinelRef} />
         </div>
       </div>
 
@@ -51,6 +53,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Sentinel: al final del Hero */}
+      <div ref={sentinelRef} id="hero-end" />
     </div>
   );
 }
