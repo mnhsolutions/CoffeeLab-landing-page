@@ -1,7 +1,8 @@
-export default function LinkNavbar({ titleLink, href }) {
+export default function LinkNavbar({ titleLink, href, onClick }) {
   return (
     <a
       href={href}
+      onClick={onClick}
       className="
         relative font-heading font-semibold text-current text-2xl
         md:text-[1rem]

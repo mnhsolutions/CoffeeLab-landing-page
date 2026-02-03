@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <>
-			<section className="py-20 h-full max-md:py-12 max-md:h-auto">
+			<section id="about" className="py-20 h-full max-md:py-12 max-md:h-auto">
   			<div className="max-w-[1200px] mx-auto h-full px-4 max-md:px-6">
     			<div className="grid grid-rows-[auto_1fr] h-full max-md:h-auto">
       			<header className="flex flex-col justify-center items-center gap-6 text-center h-28

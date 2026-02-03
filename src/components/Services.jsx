@@ -4,7 +4,7 @@ import ServiceCard from "./Services_section/ServiceCard"
 export default function Services() {
   return (
     <section>
-      <div className="max-w-[1200px] mx-auto py-10">
+      <div id="services" className="max-w-[1200px] mx-auto py-10">
         <section className="flex flex-col gap-10 mx-0">
           <header className="flex items-center justify-center">
             <h1 className="relative text-2xl font-bold after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-8px] after:h-[3px] after:w-44 after:bg-amber-500">

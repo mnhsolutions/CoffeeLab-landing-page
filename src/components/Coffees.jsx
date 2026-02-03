@@ -3,7 +3,7 @@ import CoffeeCard from './Coffees/CoffeeCard';
 
 export default function Coffees() {
   return (
-    <section className="py-10">
+    <section id="coffees" className="py-10">
       <div className="max-w-[1200px] mx-auto flex flex-col gap-10">
         <header className="flex items-center justify-center">
           <h1 className="relative text-2xl font-bold after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-8px] after:h-[3px] after:w-44 after:bg-amber-500">

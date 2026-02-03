@@ -35,6 +35,10 @@ export default function Navbar({ sentinelRef }) {
     return () => document.body.classList.remove("overflow-hidden");
   }, [isMobileMenuOpen]);
 
+  const handleMobileLinkClick = () => {
+    toggleMobileMenu();
+  };
+
   return (
     <>
       <nav
@@ -90,7 +94,7 @@ export default function Navbar({ sentinelRef }) {
                 <LinkNavbar
                   titleLink={link.title}
                   href={link.href}
-                  onClick={toggleMobileMenu}
+                  onClick={handleMobileLinkClick}
                 />
               </li>
             ))}

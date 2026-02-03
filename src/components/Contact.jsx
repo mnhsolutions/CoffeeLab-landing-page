@@ -5,7 +5,7 @@ export default function Contact() {
   const info = contactData.info;
 
   return (
-    <section className="h-full max-md:h-auto">
+    <section id="contact" className="h-full max-md:h-auto">
       <div className="max-w-[1200px] mx-auto py-10 h-full max-md:h-auto px-4 max-md:px-6">
         {/* GRID PRINCIPAL */}
         <div className="grid grid-rows-[auto_1fr] h-full gap-10 max-md:grid-rows-none max-md:gap-8">
