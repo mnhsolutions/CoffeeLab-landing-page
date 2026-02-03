@@ -36,8 +36,7 @@ export default function Hero() {
             <div className="flex items-center gap-6 max-sm:gap-4">
               <a
                 href="#menu"
-                className="inline-flex items-center justify-center px-6 py-3 font-heading font-medium tracking-wide rounded-full bg-white text-neutral-900 transition-all duration-300 hover:bg-stone-200"
-              >
+                className="inline-flex items-center justify-center px-6 py-3 font-heading font-medium tracking-wide rounded-full bg-white text-neutral-900 transition-all duration-300 hover:bg-stone-200">
                 Explorar menú
               </a>
 

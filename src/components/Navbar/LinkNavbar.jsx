@@ -3,7 +3,7 @@ export default function LinkNavbar({ titleLink, href }) {
     <a
       href={href}
       className="
-        relative font-heading font-semibold text-current text-xl
+        relative font-heading font-semibold text-current text-2xl
         md:text-[1rem]
         after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2
         after:bottom-[-6px] md:after:bottom-[-4px]
@@ -11,8 +11,9 @@ export default function LinkNavbar({ titleLink, href }) {
         after:w-60 md:after:w-[50%]
         after:bg-current after:origin-center
         after:transition-transform after:duration-300
-        after:scale-x-100 md:after:scale-x-0 md:hover:after:scale-x-100
-      ">
+        after:scale-x-0 md:hover:after:scale-x-100
+      "
+    >
       {titleLink}
     </a>
   );

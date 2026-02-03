@@ -1,6 +1,7 @@
-export default function IconAll() {
+export default function IconAll({ className }) {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
