@@ -59,7 +59,7 @@ export default function Menu() {
         </header>
 
         {/* Product List */}
-        <ul className="flex overflow-x-auto gap-6 px-4 pb-4 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-8 justify-items-center">
+        <ul className="flex overflow-x-auto gap-6 px-4 pb-4 scrollbar-hide md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-8 justify-items-center">
           {products.map((product) => (
             <li key={product.id} className="snap-center shrink-0 w-72 sm:w-auto">
               <MenuCard {...product} />

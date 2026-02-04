@@ -23,7 +23,7 @@ export default function Hero() {
             <h1 className="font-heading text-4xl md:text-4xl font-semibold leading-tight mb-4
               max-sm:text-2xl max-sm:leading-snug">
               Tu café de especialidad
-              <br className="max-sm:hidden" />
+              <br />
               empieza acá.
             </h1>
 

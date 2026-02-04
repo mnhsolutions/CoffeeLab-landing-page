@@ -15,8 +15,7 @@ export default function About() {
 					{/* CONTENIDO */}
       			<div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-max-md:gap-8">
 						{/* IMAGEN */}
-        		<div className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg
-            max-md:h-64">
+        		<div className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg max-md:h-64">
           		<img
             		src="/images/about-us-background.webp"
             		alt="CoffeeLab interior"

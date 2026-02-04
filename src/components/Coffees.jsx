@@ -12,7 +12,7 @@ export default function Coffees() {
         </header>
 
         <ul className="flex overflow-x-auto gap-2 snap-x snap-mandatory px-3 pb-4
-          sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:gap-8
+          scrollbar-hide sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:gap-8
           lg:grid-cols-4 lg:gap-6 justify-items-center">
           {coffeesData.coffees.map((coffee) => (
             <li key={coffee.titleCard} className="snap-center shrink-0 w-auto sm:w-auto">

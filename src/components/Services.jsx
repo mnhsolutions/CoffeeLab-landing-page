@@ -12,7 +12,7 @@ export default function Services() {
             </h1>
           </header>
 
-          <ul className="flex overflow-x-auto gap-6 snap-x snap-mandatory px-4 pb-4
+          <ul className="flex overflow-x-auto gap-6 snap-x snap-mandatory px-4 pb-4 scrollbar-hide
               sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:gap-8 justify-items-center
               lg:grid-cols-4">
             {servicesData.services.map((service) => (
