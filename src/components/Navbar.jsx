@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import { useState, useEffect, useRef } from "react";
 import LinkNavbar from "./Navbar/LinkNavbar";
 import IconCart from "../icons/IconCart";
@@ -15,6 +17,7 @@ const navLinks = [
 ];
 
 export default function Navbar({ sentinelRef }) {
+  const { cart } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navbarRef = useRef(null);
 
@@ -60,10 +63,15 @@ export default function Navbar({ sentinelRef }) {
         </div>
 
         <div className="flex items-center gap-4">
-          <button id="cart-icon" className="cursor-pointer">
+          <Link to="/cart" className="relative cursor-pointer">
             <IconCart />
-          </button>
-
+            {cart.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-amber-500 text-black text-xs 
+                     w-5 h-5 rounded-full flex items-center justify-center font-bold">
+                {cart.length}
+              </span>
+            )}
+          </Link>
           <button
             id="menu-toggle"
             className="flex flex-col justify-center items-center w-6 h-6 gap-1 md:hidden"

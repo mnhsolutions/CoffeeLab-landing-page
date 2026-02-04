@@ -2,10 +2,10 @@ import { useEffect } from "react";
 
 export default function useNavbarColorOnScroll(navbarRef, sentinelRef) {
   useEffect(() => {
+    if (!navbarRef?.current || !sentinelRef?.current) return;
+
     const navbar = navbarRef.current;
     const sentinel = sentinelRef.current;
-
-    if (!navbar || !sentinel) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -34,7 +34,6 @@ export default function useNavbarColorOnScroll(navbarRef, sentinelRef) {
     );
 
     observer.observe(sentinel);
-
     return () => observer.disconnect();
   }, [navbarRef, sentinelRef]);
 }
