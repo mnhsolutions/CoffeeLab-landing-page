@@ -9,8 +9,8 @@ export default function IconBaking({ className }) {
       fill="none"
       stroke="currentColor"
       stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokelinecap="round"
+      strokelinejoin="round"
       class="lucide lucide-croissant-icon lucide-croissant"
     >
       <path d="M10.2 18H4.774a1.5 1.5 0 0 1-1.352-.97 11 11 0 0 1 .132-6.487" />

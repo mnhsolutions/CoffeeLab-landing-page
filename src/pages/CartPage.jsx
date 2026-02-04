@@ -1,114 +1,73 @@
 import { useCart } from "../context/CartContext";
+import { useCheckout } from "../hooks/useCheckout";
+import CartItem from "../components/Cart/CartItem";
+import CheckoutSummary from "../components/Cart/CheckoutSummary";
 
 export default function CartPage() {
-  const {
-    cart,
-    increaseQty,
-    decreaseQty,
-    removeFromCart,
-    totalPrice,
-  } = useCart();
+  const { cart, increaseQty, decreaseQty, removeFromCart } = useCart();
 
-  if (cart.length === 0) {
-    return (
-      <section className="min-h-screen flex flex-col items-center justify-center gap-4">
-        <p className="text-2xl font-semibold text-gray-700">
-          Tu carrito está vacío 🛒
-        </p>
-        <p className="text-gray-500">
-          Agregá productos desde el menú
-        </p>
-      </section>
-    );
-  }
+  const {
+    total,
+    isProcessing,
+    transactionId,
+    paymentMethod,
+    purchaseDate,
+    merchant,
+    handleConfirmPurchase,
+  } = useCheckout(cart);
+
+  const isCartEmpty = cart.length === 0;
 
   return (
-    <section className="max-w-[1200px] mx-auto py-28 px-4">
-      <h1 className="text-3xl font-bold mb-10">Carrito de compras</h1>
+    <div className="min-h-screen grid grid-rows-[200px_4fr] bg-gray-50">
+      {/* Header */}
+      <header className="flex flex-col items-start justify-center px-4 md:px-10 gap-4">
+        <button
+          onClick={() => (window.location.href = "/")}
+          className="w-32 bg-gray-800 text-white py-3 rounded-xl cursor-pointer hover:opacity-90"
+        >
+          Volver a inicio
+        </button>
+        <h1 className="font-bold text-black text-3xl">
+          Resumen de compra
+        </h1>
+      </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
-        {/* LISTA DE PRODUCTOS */}
-        <ul className="flex flex-col gap-6">
-          {cart.map((item) => (
-            <li
-              key={item.id}
-              className="flex gap-6 p-6 bg-white rounded-xl shadow-sm border"
-            >
-              {/* Imagen */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-24 h-24 object-contain"
-              />
+      <div className="grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-6 px-4 md:px-10 pb-10">
+        {/* Lista de productos */}
+        <section className="bg-white rounded-xl shadow p-4 grid grid-rows-[60px_1fr] min-h-0">
+          <h2 className="font-bold mb-3">Productos</h2>
 
-              {/* Info */}
-              <div className="flex-1 flex flex-col gap-2">
-                <h3 className="text-lg font-semibold">
-                  {item.title}
-                </h3>
+          {isCartEmpty ? (
+            <p className="text-gray-500">No hay productos en el carrito</p>
+          ) : (
+            <ul className="flex flex-col overflow-y-auto min-h-0 gap-4 pr-2">
+              {cart.map((item) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  increaseQty={increaseQty}
+                  decreaseQty={decreaseQty}
+                  removeFromCart={removeFromCart}
+                />
+              ))}
+            </ul>
+          )}
+        </section>
 
-                <p className="text-gray-500 text-sm">
-                  Precio unitario: ${item.price}
-                </p>
-
-                {/* Cantidad */}
-                <div className="flex items-center gap-3 mt-2">
-                  <button
-                    onClick={() => decreaseQty(item.id)}
-                    className="w-8 h-8 border rounded flex items-center justify-center text-lg"
-                  >
-                    −
-                  </button>
-
-                  <span className="min-w-[24px] text-center font-medium">
-                    {item.quantity}
-                  </span>
-
-                  <button
-                    onClick={() => increaseQty(item.id)}
-                    className="w-8 h-8 border rounded flex items-center justify-center text-lg"
-                  >
-                    +
-                  </button>
-                </div>
-
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  className="text-sm text-red-500 mt-2 w-fit"
-                >
-                  Eliminar
-                </button>
-              </div>
-
-              {/* Subtotal */}
-              <div className="flex flex-col justify-between items-end">
-                <span className="text-lg font-semibold">
-                  ${item.price * item.quantity}
-                </span>
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        {/* RESUMEN */}
-        <aside className="h-fit sticky top-28 bg-white p-6 rounded-xl shadow-sm border">
-          <h2 className="text-xl font-semibold mb-4">
-            Resumen
-          </h2>
-
-          <div className="flex justify-between mb-4 text-gray-700">
-            <span>Total</span>
-            <span className="font-bold">
-              ${totalPrice}
-            </span>
-          </div>
-
-          <button className="w-full bg-amber-500 hover:bg-amber-600 transition text-black font-bold py-4 rounded-xl">
-            Finalizar compra
-          </button>
-        </aside>
+        {/* Resumen de compra */}
+        {!isCartEmpty && (
+          <CheckoutSummary
+            total={total}
+            transactionId={transactionId}
+            paymentMethod={paymentMethod}
+            purchaseDate={purchaseDate}
+            merchant={merchant}
+            isProcessing={isProcessing}
+            handleConfirmPurchase={handleConfirmPurchase}
+          />
+        )}
       </div>
-    </section>
+    </div>
   );
 }
-

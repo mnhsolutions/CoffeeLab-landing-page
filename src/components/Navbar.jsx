@@ -8,7 +8,7 @@ import IconCloseMenu from "../icons/IconCloseMenu";
 import useNavbarColorOnScroll from "../hooks/useNavbarColorOnScroll";
 
 const navLinks = [
-  { title: "Home", href: "#hero" },
+  { title: "Inicio", href: "#hero" },
   { title: "Nuestros cafés", href: "#coffees" },
   { title: "Nuestro Menú", href: "#menu" },
   { title: "Sobre nosotros", href: "#about" },
@@ -17,7 +17,7 @@ const navLinks = [
 ];
 
 export default function Navbar({ sentinelRef }) {
-  const { cart } = useCart();
+  const { cart, totalItems } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navbarRef = useRef(null);
 
@@ -68,7 +68,7 @@ export default function Navbar({ sentinelRef }) {
             {cart.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-amber-500 text-black text-xs 
                      w-5 h-5 rounded-full flex items-center justify-center font-bold">
-                {cart.length}
+                {totalItems < 99 ? totalItems : "99+"} 
               </span>
             )}
           </Link>

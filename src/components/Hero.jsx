@@ -5,7 +5,7 @@ export default function Hero() {
   const sentinelRef = useRef(null);
 
   return (
-    <div className="relative h-screen bg-[url('/images/hero-background.webp')] bg-cover bg-center text-white">
+    <div id="hero" className="relative h-screen bg-[url('/images/hero-background.webp')] bg-cover bg-center text-white">
       {/* Overlay oscuro */}
       <div className="absolute inset-0 bg-black/40"></div>
 
