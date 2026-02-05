@@ -54,7 +54,7 @@ export default function CheckoutSummary({
         onClick={handleConfirmPurchase}
         disabled={isProcessing || isSuccess}
         whileTap={!isProcessing && !isSuccess ? { scale: 0.97 } : {}}
-        className={`relative overflow-hidden w-full rounded-xl py-3 font-semibold text-white
+        className={`relative overflow-hidden w-full rounded-xl py-3 font-semibold cursor-pointer text-white
           ${
             isSuccess
               ? "bg-green-600"
