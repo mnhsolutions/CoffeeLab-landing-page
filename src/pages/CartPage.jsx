@@ -1,9 +1,12 @@
+import { usePageTitle } from "../hooks/usePageTitle";
 import { useCart } from "../context/CartContext";
 import { useCheckout } from "../hooks/useCheckout";
 import CartItem from "../components/Cart/CartItem";
 import CheckoutSummary from "../components/Cart/CheckoutSummary";
 
 export default function CartPage() {
+  usePageTitle("CoffeeLab - Carrito")
+
   const { cart, increaseQty, decreaseQty, removeFromCart } = useCart();
 
   const {

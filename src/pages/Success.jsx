@@ -1,9 +1,12 @@
+import { usePageTitle } from "../hooks/usePageTitle";
 import { useEffect, useState } from "react";
 import { motion as Motion } from "framer-motion";
 import { CheckIcon } from "../icons/CheckIcon";
 import { generateReceiptPDF } from "../utils/generateReceiptPDF"
 
 export default function Success() {
+  usePageTitle("CoffeeLab - Compra exitosa")
+
   const [summary, setSummary] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
 

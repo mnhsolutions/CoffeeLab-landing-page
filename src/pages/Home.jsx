@@ -1,3 +1,4 @@
+import { usePageTitle } from "../hooks/usePageTitle";
 import Hero from "../components/Hero";
 import Coffees from "../components/Coffees";
 import Menu from "../components/Menu";
@@ -7,6 +8,8 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
 export default function Home() {
+  usePageTitle("CoffeeLab - Inicio")
+
   return (
     <>
       <Hero />
