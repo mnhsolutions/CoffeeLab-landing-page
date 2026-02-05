@@ -1,3 +1,7 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function CheckoutSummary({
   total,
   transactionId,
@@ -5,8 +9,24 @@ export default function CheckoutSummary({
   purchaseDate,
   merchant,
   isProcessing,
+  progress,
+  statusText,
+  isSuccess, // 👈 NUEVO
   handleConfirmPurchase,
 }) {
+  const navigate = useNavigate();
+
+  // ✅ Redirect controlado (no desde el hook)
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        navigate("/success");
+      }, 1200);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess, navigate]);
+
   return (
     <aside className="h-fit py-10 bg-white rounded-xl shadow p-6 grid grid-rows-[auto_1fr_auto] gap-2">
       <h2 className="font-bold mb-3">Detalle de compra</h2>
@@ -29,17 +49,50 @@ export default function CheckoutSummary({
         </p>
       </div>
 
-      <button
+      {/* Botón animado tipo Mercado Libre */}
+      <motion.button
         onClick={handleConfirmPurchase}
-        disabled={isProcessing}
-        className={`w-full rounded-xl py-3 font-semibold text-white cursor-pointer hover:bg-amber-700 ${
-          isProcessing
-            ? "bg-amber-400 cursor-not-allowed"
-            : "bg-amber-500 hover:bg-amber-700"
-        }`}
+        disabled={isProcessing || isSuccess}
+        whileTap={!isProcessing && !isSuccess ? { scale: 0.97 } : {}}
+        className={`relative overflow-hidden w-full rounded-xl py-3 font-semibold text-white
+          ${
+            isSuccess
+              ? "bg-green-600"
+              : isProcessing
+              ? "bg-amber-400 cursor-not-allowed"
+              : "bg-amber-500 hover:bg-amber-700"
+          }`}
       >
-        {isProcessing ? "Procesando..." : "Confirmar compra"}
-      </button>
+        {/* Barra de progreso */}
+        <AnimatePresence>
+          {isProcessing && !isSuccess && (
+            <motion.div
+              className="absolute inset-y-0 left-0 bg-amber-600"
+              initial={{ width: "0%" }}
+              animate={{ width: `${progress}%` }}
+              exit={{ opacity: 0 }}
+              transition={{ ease: "easeOut", duration: 0.3 }}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Contenido */}
+        <span className="relative z-10 flex items-center justify-center gap-2">
+          {isProcessing && !isSuccess && (
+            <motion.span
+              className="h-4 w-4 rounded-full border-2 border-white border-t-transparent"
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+            />
+          )}
+
+          {isSuccess
+            ? "✔ Pago confirmado"
+            : isProcessing
+            ? statusText
+            : "Confirmar compra"}
+        </span>
+      </motion.button>
     </aside>
   );
 }

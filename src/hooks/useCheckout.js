@@ -27,33 +27,43 @@ function formatDate(date) {
 export function useCheckout(cart) {
   const merchant = "Café Moderno — Tienda Oficial";
 
-  // ✅ Inicializar transacción una sola vez
-  const [transaction, setTransaction] = useState(() => {
-    const storedTransaction = JSON.parse(localStorage.getItem("current_transaction"));
+  //  Inicializar transacción una sola vez
+  const [transaction] = useState(() => {
+    const storedTransaction = JSON.parse(
+      localStorage.getItem("current_transaction")
+    );
     if (storedTransaction) return storedTransaction;
 
     const newTransaction = {
       id: generateTransactionId(),
-      method: paymentMethods[Math.floor(Math.random() * paymentMethods.length)],
-      date: formatDate(new Date())
+      method:
+        paymentMethods[Math.floor(Math.random() * paymentMethods.length)],
+      date: formatDate(new Date()),
     };
 
-    localStorage.setItem("current_transaction", JSON.stringify(newTransaction));
+    localStorage.setItem(
+      "current_transaction",
+      JSON.stringify(newTransaction)
+    );
     return newTransaction;
   });
 
-  // ✅ Estado de proceso de pago
+  //  Estado de proceso de pago
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [progress, setProgress] = useState(0);
   const [statusText, setStatusText] = useState("Confirmar compra");
 
-  // ✅ Total calculado automáticamente a partir del carrito
+  //  Total calculado automáticamente a partir del carrito
   const total = useMemo(() => {
     const storedCart = cart || JSON.parse(localStorage.getItem("cart")) || [];
-    return storedCart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    return storedCart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
   }, [cart]);
 
-  // ✅ Confirmar compra
+  //  Confirmar compra
   function handleConfirmPurchase() {
     if (isProcessing) return;
 
@@ -62,11 +72,15 @@ export function useCheckout(cart) {
     setStatusText("Procesando pago...");
 
     let current = 0;
+
     const interval = setInterval(() => {
       const increment = Math.random() * 12 + 5;
       current += increment;
 
-      if (current >= 80) setStatusText("Confirmando compra...");
+      if (current >= 80) {
+        setStatusText("Confirmando compra...");
+      }
+
       if (current >= 100) {
         current = 100;
         clearInterval(interval);
@@ -79,12 +93,38 @@ export function useCheckout(cart) {
           merchant,
         };
 
-        localStorage.setItem("purchase_summary", JSON.stringify(summary));
-
-        // ✅ Borrar transacción actual para la próxima compra
+        localStorage.setItem(
+          "purchase_summary",
+          JSON.stringify(summary)
+        );
         localStorage.removeItem("current_transaction");
 
-        window.location.href = "/success";
+        //  Estado de éxito (animación estilo Mercado Libre)
+        setStatusText("Pago confirmado");
+        setIsSuccess(true);
+
+        if (current >= 100) {
+          current = 100;
+          clearInterval(interval);
+
+          const summary = {
+            total: total.toFixed(2),
+            transactionId: transaction.id,
+            paymentMethod: transaction.method,
+            purchaseDate: transaction.date,
+            merchant,
+          };
+
+          localStorage.setItem(
+            "purchase_summary",
+            JSON.stringify(summary)
+          );
+          localStorage.removeItem("current_transaction");
+
+          setStatusText("Pago confirmado");
+          setIsSuccess(true);
+        }
+
       }
 
       setProgress(current);
@@ -94,6 +134,7 @@ export function useCheckout(cart) {
   return {
     total,
     isProcessing,
+    isSuccess,
     progress,
     statusText,
     transactionId: transaction.id,

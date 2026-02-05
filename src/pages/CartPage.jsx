@@ -7,14 +7,19 @@ export default function CartPage() {
   const { cart, increaseQty, decreaseQty, removeFromCart } = useCart();
 
   const {
-    total,
-    isProcessing,
-    transactionId,
-    paymentMethod,
-    purchaseDate,
-    merchant,
-    handleConfirmPurchase,
-  } = useCheckout(cart);
+  total,
+  isProcessing,
+  isSuccess,
+  progress,
+  statusText,
+  transactionId,
+  paymentMethod,
+  purchaseDate,
+  merchant,
+  handleConfirmPurchase,
+} = useCheckout(cart);
+
+
 
   const isCartEmpty = cart.length === 0;
 
@@ -64,6 +69,9 @@ export default function CartPage() {
             purchaseDate={purchaseDate}
             merchant={merchant}
             isProcessing={isProcessing}
+            isSuccess={isSuccess}
+            progress={progress}
+            statusText={statusText}
             handleConfirmPurchase={handleConfirmPurchase}
           />
         )}
